@@ -5,27 +5,7 @@ set(PROJECT_VERSION 0.0.${PATCH_VERSION})
 
 project(helloworld VERSION ${PROJECT_VERSION})
 
-set (BOOST_ROOT "C:/Boost/boost_1_83_0/") # Путь к библиотеке Boost
- 
-set (CMAKE_CXX_STANDARD 14) 
-set (Boost_NO_SYSTEM_PATHS ON)
-set (Boost_USE_MULTITHREADED ON)
-set (Boost_USE_STATIC_LIBS ON)
-set (Boost_USE_STATIC_RUNTIME OFF)
-set (BOOST_ALL_DYN_LINK OFF)
-  
-# Подключаем необходимые модули. Для примера подключим program_options
-#find_package (Boost REQUIRED COMPONENTS program_options REQUIRED) 
-#find_package (Boost COMPONENTS unit_test_framework REQUIRED)
-  
-# Если библиотека найдена, то
-if (Boost_FOUND)
-    include_directories (SYSTEM ${Boost_INCLUDE_DIR}) # подключаем заголовочные файлы
-    add_executable (Boost_test "main.cpp") # Создаем исполняемый файл для нашего проекта
-    target_link_libraries (Boost_test ${Boost_LIBRARIES}) # подключаем библиотеку
-endif ()
-
-find_package (Boost COMPONENTS unit_test_framework REQUIRED)
+find_package(Boost COMPONENTS unit_test_framework REQUIRED)
 
 configure_file(version.h.in version.h)
 
